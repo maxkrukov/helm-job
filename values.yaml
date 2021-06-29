@@ -1,0 +1,108 @@
+# Default values for helm-job.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+## Job configurations
+backoffLimit: 4
+restartPolicy: Never
+
+command: ["/bin/sh","-c"]
+args: ["echo 'consuming a message'; sleep 5"]
+
+JAVA_OPTS: []
+#   - "-Param1"
+#   - "-Param2"
+
+JMX_OPTS: []
+#   - "-DParam1"
+#   - "-DParam2"
+
+env: {}
+ # MYSQL_HOST: "mysql:3306"
+ # KAFKA_HOST: "kafka:9092"
+
+environment: []
+#  - name: MY_NODE_NAME
+#    valueFrom:
+#      fieldRef:
+#        fieldPath: spec.nodeName
+
+#lifecycle:
+#  preStop:
+#    httpGet:
+#    path: /shutdown
+#    port: 4000
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+volumeMounts: []
+#  - mountPath: /etc/timezone
+#    name: <volumeName>
+#    subPath: ..data/timezone
+
+fileLoad:
+  enabled: false
+  mountPath: /app/config
+
+#files:
+#  - mountPath: /etc/timezone
+#    data:
+#      timezone: |-
+#        Europe/Kiev
+
+#binaryFiles:
+#  - mountPath: /etc/localtime
+#    data:
+#      localtime: |-
+#        VFppZjIAAAAAAAAAAAAAAAAAAAAAAAANAAAADQAAAAAAAAB5AAAADQAAACKAAAAAqhmnZLWkGWDK
+#        zS7QzOdLEM2pF5DOokMQzs2ocBUnp9AWGNxAFwjbUBf6D8AY6g7QGdtDQBrMk9AbvKDwHKyR8B2c
+#        ..............

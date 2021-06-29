@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  helm-job:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-06-29T20:48:57.944373817+03:00"
+    description: A Helm chart for Kubernetes
+    digest: 964b9404022b2479a56efde2a8aded0a32935bd48cb8abffa1396a0d44afa2e5
+    name: helm-job
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/maxkrukov/helm-job/main/helm-job-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-06-29T20:48:57.943835476+03:00"
