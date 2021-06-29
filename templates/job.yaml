@@ -24,11 +24,17 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           
           {{- if .Values.command }}        
-          command: {{ .Values.command }}
+          command:
+          {{- range .Values.command }}
+            - {{ . }}
           {{- end }}
-          
+          {{- end }}
+
           {{- if .Values.args }}
-          args: {{ .Values.args }}
+          args:
+          {{- range .Values.args }}
+            - {{ . }}
+          {{- end }}
           {{- end }}
 
           env:
