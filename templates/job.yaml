@@ -7,6 +7,13 @@ metadata:
 spec:
   backoffLimit: {{ .Values.backoffLimit }}
   template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "helm-job.selectorLabels" . | nindent 8 }}
     spec:
       restartPolicy: {{ .Values.restartPolicy }}
       {{- with .Values.imagePullSecrets }}
